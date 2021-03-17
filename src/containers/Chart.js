@@ -26,7 +26,7 @@ export default function Chart() {
     return (
         <React.Fragment>
             <Title>Today</Title>
-            {/*<ResponsiveContainer>*/}
+            <ResponsiveContainer>
                 <LineChart
                     data={data}
                     margin={{
@@ -48,7 +48,7 @@ export default function Chart() {
                     </YAxis>
                     <Line type="monotone" dataKey="amount" stroke={theme.palette.primary.main} dot={false} />
                 </LineChart>
-            {/*</ResponsiveContainer>*/}
+            </ResponsiveContainer>
         </React.Fragment>
     );
 }
