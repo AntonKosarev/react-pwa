@@ -1,40 +1,50 @@
-const CACHE_NAME = 'version-1';
-const urlsToCache = ['index.html', 'offline.html'];
+const cache_name = 'version-1';
+const cached_urls = ['./index.html', './offline.html'];
 
-// Install SW
-self.addEventListener('install', (event) => {
+self.addEventListener('install', function(event) {
     event.waitUntil(
-        caches.open(CACHE_NAME)
-            .then((cache) => {
-                console.log('Opened cache');
-                return cache.addAll(urlsToCache)
+        caches.open(cache_name)
+            .then(function(cache) {
+                return cache.addAll(cached_urls);
             })
-    )
+    );
 });
-// Listen for requests
-self.addEventListener('fetch', (event) => {
+
+self.addEventListener('activate', function(event) {
+    event.waitUntil(
+        caches.keys().then(function(cacheNames) {
+            return Promise.all(
+                cacheNames.map(function(cacheName) {
+                    if (cacheName.startsWith('pages-cache-') && staticCacheName !== cacheName) {
+                        return caches.delete(cacheName);
+                    }
+                })
+            );
+        })
+    );
+});
+
+self.addEventListener('fetch', function(event) {
+    console.log('Fetch event for ', event.request.url);
     event.respondWith(
-        caches.match(event.request)
-            .then(() => {
-                console.log('fetch');
-                return fetch(event.request)
-                    .catch(() => caches.match('offline.html'))
-            })
-    )
-});
-// Activate SW
-self.addEventListener('activate', (event) => {
-    const cacheWhitelist = [];
-    cacheWhitelist.push(CACHE_NAME);
-
-    event.waitUntil(
-        caches.keys().then((cachNames) => Promise.all(
-            cachNames.map((cachName) => {
-                if (!cacheWhitelist.includes(cachName)) {
-                    return caches.delete(cachName);
+        caches.match(event.request).then(function(response) {
+            if (response) {
+                console.log('Found ', event.request.url, ' in cache');
+                return response;
+            }
+            console.log('Network request for ', event.request.url);
+            return fetch(event.request).then(function(response) {
+                if (response.status === 404) {
+                    return caches.match('fourohfour.html');
                 }
-            })
-
-        ))
-    )
+                return caches.open(cached_urls).then(function(cache) {
+                    cache.put(event.request.url, response.clone());
+                    return response;
+                });
+            });
+        }).catch(function(error) {
+            console.log('Error, ', error);
+            return caches.match('offline.html');
+        })
+    );
 });

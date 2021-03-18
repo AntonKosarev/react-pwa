@@ -18,18 +18,20 @@ module.exports = {
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: "./public/index.html",
-            favicon: "./public/img/favicon.ico"
         }),
         new CopyWebpackPlugin ({
             patterns: [
                 {from: "./public/img/logo192.png", to: "./img/logo192.png"},
                 {from: "./public/img/logo512.png", to: "./img/log512.png"},
+                {from: "./public/img/favicon.ico", to: "./img/favicon.ico"},
                 {from: "./public/manifest.json", to: "./manifest.json"},
                 {from: "./public/serviceWorker.js", to: "./serviceWorker.js"}
             ]
         })
     ],
     devServer: {
-        contentBase: "./dist"
+        contentBase: path.join(__dirname, 'dist'),
+        compress: true,
+        port: 3000,
     },
 };
