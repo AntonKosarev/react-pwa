@@ -17,7 +17,7 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            template: "./public/index.html",
+            template: "./public/index.html"
         }),
         new CopyWebpackPlugin ({
             patterns: [
@@ -25,13 +25,14 @@ module.exports = {
                 {from: "./public/img/logo512.png", to: "./img/log512.png"},
                 {from: "./public/img/favicon.ico", to: "./img/favicon.ico"},
                 {from: "./public/manifest.json", to: "./manifest.json"},
-                {from: "./public/serviceWorker.js", to: "./serviceWorker.js"}
+                {from: "./public/serviceWorker.js", to: "./serviceWorker.js"},
+                {from: "./public/offline.html", to: "./offline.html"}
             ]
         })
     ],
     devServer: {
-        contentBase: path.join(__dirname, 'dist'),
+        contentBase: './dist',
         compress: true,
-        port: 3000,
+        port: 3000
     },
 };
