@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^12.8.3",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^8.0.0",
+    "pspdfkit": "^2021.2.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
