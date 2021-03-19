@@ -1,6 +1,6 @@
 import React from 'react';
 
-var ReactDOM = require('react-dom');
+import ReactDOM from 'react-dom';
 import clsx from 'clsx';
 import {makeStyles} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -27,19 +27,7 @@ import CustomTabsHook from "./ui/AddAndDeleteTab";
 import MainListItems from './ui/listItems';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import {pathIds, pageRoutes} from "./../routes";
-
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://material-ui.com/">
-                Corel
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
+import PsPdf from "./pdf/PsPdf";
 
 const drawerWidth = 240;
 
@@ -106,13 +94,18 @@ const useStyles = makeStyles((theme) => ({
     },
     appBarSpacer: theme.mixins.toolbar,
     content: {
+        display: 'flex',
+        flexDirection: 'column',
         flexGrow: 1,
         height: '100vh',
         overflow: 'auto',
     },
     container: {
-        paddingTop: theme.spacing(4),
-        paddingBottom: theme.spacing(4),
+        height: '100%',
+        paddingTop: theme.spacing(0),
+        paddingBottom: theme.spacing(0),
+        paddingLeft: theme.spacing(0),
+        paddingRight: theme.spacing(0),
     },
     paper: {
         padding: theme.spacing(2),
@@ -194,32 +187,14 @@ export default function HomePage() {
                 </Drawer>
                 <main className={classes.content}>
                     <div className={classes.appBarSpacer} />
-                    <Container maxWidth="lg" className={classes.container}>
-                        <Grid container spacing={3}>
-                            <Grid item xs={12} md={12} lg={12}>
-                                {/*<Paper className={fixedHeightPaper}>*/}
-                                    <Switch>
-                                        {routeArray.map((prop, key) => {
-                                            return (
-                                                <Route
-                                                    path={prop.path}
-                                                    component={prop.component}
-                                                    exact={prop.exact || false}
-                                                    key={`route-${key}`}
-                                                />
-                                            );
-                                        })}
-                                        <Route component={pageRoutes[pathIds.error404].component}/>
-                                    </Switch>
-                                {/*</Paper>*/}
-                            </Grid>
-                        </Grid>
+                    <Container maxWidth="xl" width="100%" height="100%" position="relative" className={classes.container}>
+                        <Box m={0} className="pdfWrapper" position="relative" width="100%" height="100%" mx={0}>
+                            <PsPdf containerId="defaultPdf" container="#defaultPdf" document="example.pdf"/>
+                        </Box>
+                        <Box m={0} className="pdfWrapper" display="none">
+                            <input type="file" id="openFile" />
+                        </Box>
                     </Container>
-                    {/*<Container maxWidth="lg" className={classes.container}>*/}
-                        {/*<Box pt={4}>*/}
-                            {/*<Copyright/>*/}
-                        {/*</Box>*/}
-                    {/*</Container>*/}
                 </main>
             </Router>
         </div>

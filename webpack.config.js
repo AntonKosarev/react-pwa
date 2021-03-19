@@ -15,6 +15,7 @@ module.exports = {
         ]
     },
     plugins: [
+        // new webpack.DefinePlugin({ "process.env.PUBLIC_URL": "/public\/"}),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: "./public/index.html"
@@ -26,7 +27,10 @@ module.exports = {
                 {from: "./public/img/favicon.ico", to: "./img/favicon.ico"},
                 {from: "./public/manifest.json", to: "./manifest.json"},
                 {from: "./public/serviceWorker.js", to: "./serviceWorker.js"},
-                {from: "./public/offline.html", to: "./offline.html"}
+                {from: "./public/offline.html", to: "./offline.html"},
+                {from: "./public/pspdfkit-lib", to: "./pspdfkit-lib"},
+                {from: "./public/example.pdf", to: "./example.pdf"},
+                {from: "./public/my-pspdfkit.css", to: "./my-pspdfkit.css"},
             ]
         })
     ],
