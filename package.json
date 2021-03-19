@@ -12,6 +12,7 @@
     "copy-webpack-plugin": "^8.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "recharts": "^2.0.8",
     "web-vitals": "^0.2.4",
@@ -29,11 +30,10 @@
     "workbox-streams": "^5.1.4"
   },
   "scripts": {
-    "start": "webpack --mode development",
     "build": "webpack --mode development",
-    "serve": "webpack serve --mode development --open --hot",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build_watch": "webpack --mode development --watch",
+    "serve": "webpack serve --mode development --open",
+    "serve_watch": "webpack serve --mode development --open --hot"
   },
   "eslintConfig": {
     "extends": [

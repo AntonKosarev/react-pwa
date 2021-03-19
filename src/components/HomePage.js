@@ -1,6 +1,8 @@
 import React from 'react';
+
+var ReactDOM = require('react-dom');
 import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
 import Box from '@material-ui/core/Box';
@@ -18,10 +20,13 @@ import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import { mainListItems, secondaryListItems } from './ui/listItems';
 import Chart from './ui/Chart';
 import Deposits from './ui/Deposits';
 import Orders from './ui/Orders';
+import CustomTabsHook from "./ui/AddAndDeleteTab";
+import MainListItems from './ui/listItems';
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import {pathIds, pageRoutes} from "./../routes";
 
 function Copyright() {
     return (
@@ -53,6 +58,7 @@ const useStyles = makeStyles((theme) => ({
         ...theme.mixins.toolbar,
     },
     appBar: {
+        backgroundColor: "#9c1347",
         zIndex: theme.zIndex.drawer + 1,
         transition: theme.transitions.create(['width', 'margin'], {
             easing: theme.transitions.easing.sharp,
@@ -84,6 +90,8 @@ const useStyles = makeStyles((theme) => ({
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.enteringScreen,
         }),
+        backgroundColor: "#9c1347",
+        color: "#ffffff"
     },
     drawerPaperClose: {
         overflowX: 'hidden',
@@ -113,11 +121,22 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
     },
     fixedHeight: {
-        height: 240,
+        height: 400,
+    },
+    overrides: {
+        // Style sheet name ⚛️
+        MuiButton: {
+            // Name of the rule
+            text: {
+                // Some CSS
+                color: 'white',
+            },
+        },
     },
 }));
 
-export default function Dashboard() {
+export default function HomePage() {
+    const routeArray = Object.values(pageRoutes);
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
     const handleDrawerOpen = () => {
@@ -130,7 +149,7 @@ export default function Dashboard() {
 
     return (
         <div className={classes.root}>
-            <CssBaseline />
+            <CssBaseline/>
             <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
                 <Toolbar className={classes.toolbar}>
                     <IconButton
@@ -140,63 +159,69 @@ export default function Dashboard() {
                         onClick={handleDrawerOpen}
                         className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
                     >
-                        <MenuIcon />
+                        <MenuIcon/>
                     </IconButton>
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
                         React PWA
                     </Typography>
                     <IconButton color="inherit">
-                        <Badge badgeContent={4} color="secondary">
-                            <NotificationsIcon />
-                        </Badge>
+                        {/*<Badge badgeContent={4} color="secondary">*/}
+                        {/*    <NotificationsIcon/>*/}
+                        {/*</Badge>*/}
                     </IconButton>
                 </Toolbar>
             </AppBar>
-            <Drawer
-                variant="permanent"
-                classes={{
-                    paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
-                }}
-                open={open}
-            >
-                <div className={classes.toolbarIcon}>
-                    <IconButton onClick={handleDrawerClose}>
-                        <ChevronLeftIcon />
-                    </IconButton>
-                </div>
-                <Divider />
-                <List>{mainListItems}</List>
-                <Divider />
-                <List>{secondaryListItems}</List>
-            </Drawer>
-            <main className={classes.content}>
-                <div className={classes.appBarSpacer} />
-                <Container maxWidth="lg" className={classes.container}>
-                    <Grid container spacing={3}>
-                        {/* Chart */}
-                        <Grid item xs={12} md={8} lg={9}>
-                            <Paper className={fixedHeightPaper}>
-                                <Chart />
-                            </Paper>
+            <Router>
+                <Drawer
+                    variant="permanent"
+                    classes={{
+                        paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
+                    }}
+                    open={open}
+                >
+                    <div className={classes.toolbarIcon}>
+                        <IconButton onClick={handleDrawerClose}>
+                            <ChevronLeftIcon/>
+                        </IconButton>
+                    </div>
+                    <Divider/>
+                    <List>
+                        <div>
+                            <MainListItems routes={routeArray}/>
+                        </div>
+                    </List>
+                    <Divider/>
+                </Drawer>
+                <main className={classes.content}>
+                    <div className={classes.appBarSpacer} />
+                    <Container maxWidth="lg" className={classes.container}>
+                        <Grid container spacing={3}>
+                            <Grid item xs={12} md={12} lg={12}>
+                                {/*<Paper className={fixedHeightPaper}>*/}
+                                    <Switch>
+                                        {routeArray.map((prop, key) => {
+                                            return (
+                                                <Route
+                                                    path={prop.path}
+                                                    component={prop.component}
+                                                    exact={prop.exact || false}
+                                                    key={`route-${key}`}
+                                                />
+                                            );
+                                        })}
+                                        <Route component={pageRoutes[pathIds.error404].component}/>
+                                    </Switch>
+                                {/*</Paper>*/}
+                            </Grid>
                         </Grid>
-                        {/* Recent Deposits */}
-                        <Grid item xs={12} md={4} lg={3}>
-                            <Paper className={fixedHeightPaper}>
-                                <Deposits />
-                            </Paper>
-                        </Grid>
-                        {/* Recent Orders */}
-                        <Grid item xs={12}>
-                            <Paper className={classes.paper}>
-                                <Orders />
-                            </Paper>
-                        </Grid>
-                    </Grid>
-                    <Box pt={4}>
-                        <Copyright />
-                    </Box>
-                </Container>
-            </main>
+                    </Container>
+                    {/*<Container maxWidth="lg" className={classes.container}>*/}
+                        {/*<Box pt={4}>*/}
+                            {/*<Copyright/>*/}
+                        {/*</Box>*/}
+                    {/*</Container>*/}
+                </main>
+            </Router>
         </div>
     );
 }
