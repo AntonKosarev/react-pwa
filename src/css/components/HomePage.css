@@ -1,0 +1,15 @@
+#theme-v1 .MuiDrawer-paperAnchorDockedLeft {
+    border-right: 0;
+}
+
+.MuiList-root .active .theme-v1.MuiListItem-button {
+    background-color: rgba(0, 0, 0, 0.23);
+}
+
+#theme-v1 .MuiTouchRipple-root {
+    display: none;
+}
+
+#theme-v1 .makeStyles-fileUploaderButton-20:hover {
+    background-color: #000000;
+}

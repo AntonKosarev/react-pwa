@@ -1,9 +1,9 @@
 import React from "react"
-import CustomTabsHook from "./AddAndDeleteTab";
+import Tabs from "./Tabs";
 
 const Files = () => (
     <div>
-        <CustomTabsHook/>
+        <Tabs/>
     </div>
 );
 
