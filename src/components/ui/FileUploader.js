@@ -9,8 +9,9 @@ const useStyles = makeStyles((theme) => ({
         alignSelf: 'center'
     },
     fileUploaderButton: {
-        backgroundColor: '#390000',
+        backgroundColor: 'rgba(96, 33, 106, 1)',
         color: '#ffffff',
+        padding: '6px 20px'
     }
 }));
 
