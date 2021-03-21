@@ -1,10 +1,9 @@
 import React from "react"
-// import CustomTabsHook from "./AddAndDeleteTab";
-import MaterialTabs from "./MaterialTabs";
+import Tabs from "./Tabs";
 
 const Files = () => (
-    <div style={{height: "100%"}}>
-        <MaterialTabs/>
+    <div>
+        <Tabs/>
     </div>
 );
 

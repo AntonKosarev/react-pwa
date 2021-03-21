@@ -1,5 +1,4 @@
 import React from 'react';
-
 import clsx from 'clsx';
 import {makeStyles} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -17,6 +16,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import MainListItems from './ui/listItems';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import {pathIds, pageRoutes} from "./../routes";
+import '../css/components/HomePage.css';
 
 const drawerWidth = 240;
 
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
         ...theme.mixins.toolbar,
     },
     appBar: {
-        backgroundColor: "#9c1347",
+        backgroundImage: "linear-gradient(to right, #9F1147 0, #D4175D 100%)",
         zIndex: theme.zIndex.drawer + 1,
         transition: theme.transitions.create(['width', 'margin'], {
             easing: theme.transitions.easing.sharp,
@@ -67,8 +67,8 @@ const useStyles = makeStyles((theme) => ({
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.enteringScreen,
         }),
-        backgroundColor: "#9c1347",
-        color: "#ffffff"
+        color: "#ffffff",
+        backgroundImage: "linear-gradient(to bottom, #9F1147 192px, #D4175D 100%)"
     },
     drawerPaperClose: {
         overflowX: 'hidden',
@@ -97,23 +97,13 @@ const useStyles = makeStyles((theme) => ({
         paddingRight: theme.spacing(0),
     },
     paper: {
-        padding: theme.spacing(2),
+        padding: theme.spacing(1),
         display: 'flex',
         overflow: 'auto',
         flexDirection: 'column',
     },
     fixedHeight: {
         height: 400,
-    },
-    overrides: {
-        // Style sheet name ⚛️
-        MuiButton: {
-            // Name of the rule
-            text: {
-                // Some CSS
-                color: 'white',
-            },
-        },
     },
 }));
 
@@ -130,7 +120,7 @@ export default function HomePage() {
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
     return (
-        <div className={classes.root}>
+        <div className={classes.root} id="theme-v1">
             <CssBaseline/>
             <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
                 <Toolbar className={classes.toolbar}>
@@ -146,11 +136,6 @@ export default function HomePage() {
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
                         React PWA
                     </Typography>
-                    <IconButton color="inherit">
-                        {/*<Badge badgeContent={4} color="secondary">*/}
-                        {/*    <NotificationsIcon/>*/}
-                        {/*</Badge>*/}
-                    </IconButton>
                 </Toolbar>
             </AppBar>
             <Router>
@@ -191,7 +176,7 @@ export default function HomePage() {
                                           />
                                         );
                                     })}
-                                    <Route component={pageRoutes[pathIds.error404].component}/>
+                                        <Route component={pageRoutes[pathIds.home].component}/>
                                 </Switch>
                                 {/*</Paper>*/}
                             </Grid>
