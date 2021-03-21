@@ -70,7 +70,7 @@ export default class PsPdf extends Component {
 
     PSPDFKit.load({
       toolbarItems: toolbarItems,
-      document    : this.state.document,
+      document    : this.state.document,//url or ArrayBuffer
       container   : this.state.container,
       licenseKey  : this.state.licenseKey,
       baseUrl     : this.state.baseUrl,

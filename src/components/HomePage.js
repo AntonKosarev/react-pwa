@@ -15,7 +15,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import MainListItems from './ui/listItems';
 import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
-import {pathIds, pageRoutes} from "./../routes";
+import {pageRoutes} from "./../routes";
 import '../css/components/HomePage.css';
 
 const drawerWidth = 240;

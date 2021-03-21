@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from 'react-dom';
 import {makeStyles} from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -28,7 +27,7 @@ export default function mainListItems({routes}) {
                 {routes.map(({path, noRender, sidebarName, ...prop}, index) => {
                     if (noRender) return null;
                     return (
-                        <NavLink to={path} key={`route-${index}}`}>
+                        <NavLink to={path} key={`route-${index}}`} className="Mui-list-item">
                             <ListItem button className="theme-v1">
                                 <ListItemIcon className={classes.MuiListItemIcon} >
                                     <prop.icon/>

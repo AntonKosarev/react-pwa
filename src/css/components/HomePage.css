@@ -10,18 +10,12 @@
     display: none;
 }
 
-#theme-v1 .MuiButtonBase-root:hover {
-    background-color: rgba(96, 33, 106, 0.81);
-}
-#theme-v1 .MuiTab-textColorInherit.Mui-selected {
-    background-color: rgba(96, 33, 106, 0.81);
-}
-
 #theme-v1 .MuiButtonBase-root:hover .MuiTab-wrapper {
-    -webkit-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-    transform: scale(1.2);
-    transition: all 1s ease-out;
+    -webkit-transform : scale(1.2);
+    -ms-transform     : scale(1.2);
+    transform         : scale(1.2);
+    transition        : all 1s ease-out;
+}
 #theme-v1 .makeStyles-fileUploaderButton-20:hover {
     background-color: #000000;
 }
@@ -34,3 +28,6 @@
 #theme-v1 .MuiTab-wrapper {
     color: #6B6E70;
 }
+#theme-v1 .Mui-list-item {
+    text-decoration: none;
+ }
