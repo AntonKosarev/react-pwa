@@ -14,7 +14,7 @@ import Grid from '@material-ui/core/Grid';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import MainListItems from './ui/listItems';
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
 import {pathIds, pageRoutes} from "./../routes";
 import '../css/components/HomePage.css';
 
@@ -105,6 +105,11 @@ const useStyles = makeStyles((theme) => ({
     fixedHeight: {
         height: 400,
     },
+    grid : {
+        paddingLeft: "0!important",
+        paddingRight: "0!important",
+        paddingTop: "0!important"
+    }
 }));
 
 export default function HomePage() {
@@ -162,9 +167,8 @@ export default function HomePage() {
                 <main className={classes.content}>
                     <div className={classes.appBarSpacer} />
                     <Container maxWidth="xl" width="100%" height="100%" position="relative" className={classes.container}>
-                        <Grid container spacing={3} alignItems="stretch" style={{height: "100%"}}>
-                            <Grid item xs={12} md={12} lg={12}>
-                                {/*<Paper className={fixedHeightPaper}>*/}
+                        <Grid container spacing={3} alignItems="stretch" style={{height: "100%", margin: 0, width:"100%"}}>
+                            <Grid item xs={12} md={12} lg={12} className={classes.grid}>
                                 <Switch>
                                     {routeArray.map((prop, key) => {
                                         return (
@@ -176,9 +180,10 @@ export default function HomePage() {
                                           />
                                         );
                                     })}
-                                        <Route component={pageRoutes[pathIds.home].component}/>
+                                    <Route exact path="/">
+                                        <Redirect to="/home" />
+                                    </Route>
                                 </Switch>
-                                {/*</Paper>*/}
                             </Grid>
                         </Grid>
                     </Container>

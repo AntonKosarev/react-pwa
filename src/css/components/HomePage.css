@@ -13,3 +13,12 @@
 #theme-v1 .makeStyles-fileUploaderButton-20:hover {
     background-color: #000000;
 }
+#theme-v1 .MuiTabs-indicator {
+    background-color: transparent;
+}
+#theme-v1 .MuiTab-root.Mui-selected {
+    background-color: #FBFBFB;
+}
+#theme-v1 .MuiTab-wrapper {
+    color: #6B6E70;
+}

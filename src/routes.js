@@ -11,7 +11,6 @@ const pathIds = {
 const pathRouting = {
     files: "/files",
     home: "/home",
-
 };
 
 const pageRoutes = {
@@ -26,12 +25,6 @@ const pageRoutes = {
         sidebarName: "Files",
         icon: InsertDriveFileOutlinedIcon,
         component: Files
-    },
-    [pathIds.error404]: {
-        path: pathRouting.home,
-        sidebarName: "Home",
-        icon: HomeOutlinedIcon,
-        component: Home
     }
 };
 

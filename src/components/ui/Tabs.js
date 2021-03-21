@@ -4,15 +4,16 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import FileUploader from "./FileUploader";
+import PsPdf from "../pdf/PsPdf";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
 
     return (
         <div
+            style={{width: "100%", height: "100%"}}
             role="tabpanel"
             hidden={value !== index}
             id={`simple-tabpanel-${index}`}
@@ -20,8 +21,8 @@ function TabPanel(props) {
             {...other}
         >
             {value === index && (
-                <Box p={3}>
-                    <Typography>{children}</Typography>
+                <Box p={0} height="100%">
+                    {children}
                 </Box>
             )}
         </div>
@@ -48,13 +49,14 @@ const useStyles = makeStyles((theme) => ({
         verticalAlign: 'center',
         padding: 0,
         margin: 0,
-        width: '100%'
+        width: '100%',
+        height: '100%'
     },
     appBar: {
-        backgroundImage: "linear-gradient(to bottom, #9F1147 192px, #D4175D 100%)",
+        backgroundColor: "#ffffff",
     },
     tabPanel: {
-        height: "100%"
+        height: '100%'
     },
     fileUploader: {
         alignSelf: 'end',
@@ -82,19 +84,29 @@ export default function SimpleTabs() {
                 </Tabs>
             </AppBar>
             <TabPanel className={classes.tabPanel} value={value} index={0}>
-                Item One
+                <div style={{width: "100%", height: "100%", position: "static"}}>
+                    <PsPdf containerId="defaultPdf" container="#defaultPdf" document="example.pdf"/>
+                </div>
             </TabPanel>
             <TabPanel className={classes.tabPanel} value={value} index={1}>
-                Item Two
+                <div style={{width: "100%", height: "100%", position: "static"}}>
+                    <PsPdf containerId="defaultPdf2" container="#defaultPdf2" document="example.pdf"/>
+                </div>
             </TabPanel>
             <TabPanel className={classes.tabPanel} value={value} index={2}>
-                Item Three
+                <div style={{width: "100%", height: "100%", position: "static"}}>
+                    <PsPdf containerId="defaultPdf3" container="#defaultPdf3" document="example.pdf"/>
+                </div>
             </TabPanel>
             <TabPanel className={classes.tabPanel} value={value} index={3}>
-                Item Three
+                <div style={{width: "100%", height: "100%", position: "static"}}>
+                    <PsPdf containerId="defaultPdf4" container="#defaultPdf4" document="example.pdf"/>
+                </div>
             </TabPanel>
             <TabPanel className={classes.tabPanel} value={value} index={4}>
-                Item Three
+                <div style={{width: "100%", height: "100%", position: "static"}}>
+                    <PsPdf containerId="defaultPdf5" container="#defaultPdf5" document="example.pdf"/>
+                </div>
             </TabPanel>
         </div>
     );
