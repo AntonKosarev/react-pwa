@@ -26,7 +26,6 @@ self.addEventListener('activate', function(event) {
 
 self.addEventListener('fetch', function(event) {
     console.log('Fetch event for ', event.request.url);
-    /*
     event.respondWith(
         caches.match(event.request).then(function(response) {
             if (response) {
@@ -48,5 +47,4 @@ self.addEventListener('fetch', function(event) {
             return caches.match('offline.html');
         })
     );
-     */
 });
