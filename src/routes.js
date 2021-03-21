@@ -3,22 +3,17 @@ import InsertDriveFileOutlinedIcon from '@material-ui/icons/InsertDriveFileOutli
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 import Home from "./components/ui/Home";
 import Files from "./components/ui/Files";
-import DefaultPage from "./components/ui/DefaultPage";
-import Register from "./components/ui/Register";
 
 const pathIds = {
     files: "files",
     home: "home",
     error404: "error-404",
-    register: "register"
-
 };
 
 const pathRouting = {
     files: "/files",
     home: "/home",
     defaultPage: "/defaultPage",
-    register: "/register"
 
 };
 
@@ -36,18 +31,10 @@ const pageRoutes = {
         component: Files
     },
     [pathIds.error404]: {
-        path: pathRouting.defaultPage,
-        sidebarName: "defaultPage",
-        icon: DraftsIcon,
-        noRender: true,
-        component: DefaultPage
-    },
-    [pathIds.register]: {
-        path: pathRouting.register,
-        sidebarName: "Register",
-        icon: DraftsIcon,
-        noRender: true,
-        component: Register
+        path: pathRouting.home,
+        sidebarName: "Home",
+        icon: HomeOutlinedIcon,
+        component: Home
     }
 };
 

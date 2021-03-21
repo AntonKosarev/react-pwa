@@ -30,6 +30,7 @@ module.exports = {
                 {from: "./public/offline.html", to: "./offline.html"},
                 {from: "./public/pspdfkit-lib", to: "./pspdfkit-lib"},
                 {from: "./public/example.pdf", to: "./example.pdf"},
+                {from: "./public/example2.pdf", to: "./example2.pdf"},
                 {from: "./public/my-pspdfkit.css", to: "./my-pspdfkit.css"},
             ]
         })

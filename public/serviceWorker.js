@@ -1,5 +1,5 @@
 const cache_name = 'version-1';
-const cached_urls = ['index.html', 'offline.html'];
+const cached_urls = ['index.html', 'offline.html', '404.html'];
 
 self.addEventListener('install', function(event) {
     event.waitUntil(
@@ -35,7 +35,7 @@ self.addEventListener('fetch', function(event) {
             console.log('Network request for ', event.request.url);
             return fetch(event.request).then(function(response) {
                 if (response.status === 404) {
-                    return caches.match('fourohfour.html');
+                    return caches.match('404.html');
                 }
                 return caches.open(cached_urls).then(function(cache) {
                     cache.put(event.request.url, response.clone());

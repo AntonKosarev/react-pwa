@@ -1,5 +1,5 @@
 import React from "react";
-var ReactDOM = require('react-dom');
+import ReactDOM from 'react-dom';
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";

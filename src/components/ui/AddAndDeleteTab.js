@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AppBar, Tabs, Tab, Grid, Button } from "@material-ui/core";
+import { AppBar, Tabs, Tab, Box, Paper, Grid, Button } from "@material-ui/core";
 import Add from "@material-ui/icons/Add";
 import Close from "@material-ui/icons/Close";
 import { makeStyles } from "@material-ui/styles";
@@ -26,6 +26,9 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
+let maxTabIndex = 0;
+let currentTablIndex = 0;
+
 const CustomTabsHook = () => {
     const classes = useStyles();
 
@@ -38,12 +41,16 @@ const CustomTabsHook = () => {
 
     const [tabValue, setTabValue] = useState(0);
     const handleTabChange = (event, value) => {
+        currentTablIndex = value;
         setTabValue(value);
     };
 
     const addTab = () => {
+
         let id = tabList[tabList.length - 1].id + 1;
+        maxTabIndex = id;
         setTabList([...tabList, { key: id, id: id }]);
+        handleTabsContent();
     };
 
     const deleteTab = e => {
@@ -74,7 +81,19 @@ const CustomTabsHook = () => {
         setTabList(tabs);
     };
 
+    // Handle Add Tab Content
+    const [tabsContent, setTabsContent] = React.useState([
+        <TabPanel tabId={tabValue}>Default Panel - {Math.random()}</TabPanel>
+    ]);
+    const handleTabsContent = () => {
+        setTabsContent([
+            ...tabsContent,
+            <TabPanel tabId={tabValue}>New Tab Panel - {Math.random()}</TabPanel>
+        ]);
+    };
+
     return (
+      <Paper className={classes.root}>
         <AppBar position="static" className={classes.appBar}>
             {console.log(tabValue, "hohoh")}
             <Grid container alignItems="center" justify="center">
@@ -103,7 +122,24 @@ const CustomTabsHook = () => {
                 </Grid>
             </Grid>
         </AppBar>
+          <Box padding={2}>{tabsContent.map(child => child)}</Box>
+      </Paper>
     );
 };
+
+function TabPanel(props) {
+    const { children, tabId } = props;
+    return (
+      <Box
+        value={maxTabIndex}
+        index={maxTabIndex}
+        hidden={tabId !== currentTablIndex}
+        key={maxTabIndex}
+      >
+          {children}
+      </Box>
+    );
+}
+
 
 export default CustomTabsHook;

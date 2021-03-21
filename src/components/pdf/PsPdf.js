@@ -16,7 +16,7 @@ export default class PsPdf extends Component {
       document   : props.document,
       container  : props.container,
       baseUrl    : baseUrl,
-      stylesheets: stylesheets,
+      styleSheets: stylesheets,
       licenseKey : LICENSE_KEY,
     };
   }
@@ -74,7 +74,7 @@ export default class PsPdf extends Component {
       container   : this.state.container,
       licenseKey  : this.state.licenseKey,
       baseUrl     : this.state.baseUrl,
-      styleSheets : this.state.stylesheets
+      styleSheets : this.state.styleSheets
     }).then((instance) => {
       console.log("Successfully mounted PSPDFKit", instance);
       this._instance = instance;
@@ -111,7 +111,7 @@ export default class PsPdf extends Component {
       <div
         id={containerId}
         ref={this.onRef}
-        style={{width: "100%", height: "100%", position: "absolute"}}
+        style={{width: "100%", height: "100%", position: "static"}}
       />
     );
   }
