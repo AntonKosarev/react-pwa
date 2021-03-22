@@ -61,7 +61,7 @@
 
 #theme-v1 .buttonPaper p {
     text-align: center;
-    margin: 0 0 10px 0;
+    margin: 5px 0 10px 0;
 }
 
 #theme-v1 .gridPdf {
@@ -79,7 +79,7 @@
     font-size: 12px;
 }
 #theme-v1 .buttonItem {
-    margin: 0 10px;
+    margin: 29px 10px 0;
 }
 
 #theme-v1 .MuiPaper-root.MuiDrawer-paper.makeStyles-drawerPaperClose-10 .version {

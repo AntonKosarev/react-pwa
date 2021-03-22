@@ -124,74 +124,76 @@ export default function HomePage() {
     };
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
+
     return (
-        <div className={classes.root} id="theme-v1">
-            <CssBaseline/>
-            <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
-                <Toolbar className={classes.toolbar}>
-                    <IconButton
-                        edge="start"
-                        color="inherit"
-                        aria-label="open drawer"
-                        onClick={handleDrawerOpen}
-                        className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
-                    >
-                        <MenuIcon/>
-                    </IconButton>
-                    <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-                        React PWA
-                    </Typography>
-                </Toolbar>
-            </AppBar>
-            <Router>
-                <Drawer
-                    variant="permanent"
-                    classes={{
-                        paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
-                    }}
-                    open={open}
+    <div className={classes.root} id="theme-v1">
+        <CssBaseline/>
+        <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
+            <Toolbar className={classes.toolbar}>
+                <IconButton
+                    edge="start"
+                    color="inherit"
+                    aria-label="open drawer"
+                    onClick={handleDrawerOpen}
+                    className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
                 >
-                    <div className={classes.toolbarIcon}>
-                        <IconButton onClick={handleDrawerClose}>
-                            <ChevronLeftIcon/>
-                        </IconButton>
+                    <MenuIcon/>
+                </IconButton>
+                <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
+                    React PWA
+                </Typography>
+            </Toolbar>
+        </AppBar>
+        <Router>
+            <Drawer
+                variant="permanent"
+                classes={{
+                    paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
+                }}
+                open={open}
+            >
+                <div className={classes.toolbarIcon}>
+                    <IconButton onClick={handleDrawerClose}>
+                        <ChevronLeftIcon/>
+                    </IconButton>
+                </div>
+                <Divider/>
+                <List>
+                    <div>
+                        <MainListItems routes={routeArray}/>
                     </div>
-                    <Divider/>
-                    <List>
-                        <div>
-                            <MainListItems routes={routeArray}/>
-                        </div>
-                    </List>
-                    <Divider/>
-                    <div className="version">Version 2021 0.0.1</div>
-                </Drawer>
-                <main className={classes.content}>
-                    <div className={classes.appBarSpacer}/>
-                    <Container maxWidth="xl" width="100%" height="100%" position="relative"
-                               className={classes.container}>
-                        <Grid container spacing={3} alignItems="stretch"
-                              style={{height: "100%", margin: 0, width: "100%"}}>
-                            <Grid item xs={12} md={12} lg={12} className={classes.grid}>
-                                <Switch>
-                                    {routeArray.map((prop, key) => {
-                                        return (
-                                            <Route
-                                                path={prop.path}
-                                                component={prop.component}
-                                                exact={prop.exact || false}
-                                                key={`route-${key}`}
-                                            />
-                                        );
-                                    })}
-                                    <Route exact path="/">
-                                        <Redirect to="/home"/>
-                                    </Route>
-                                </Switch>
-                            </Grid>
+                </List>
+                <Divider/>
+                <div className="version">Version 2021 0.0.1</div>
+            </Drawer>
+            <main className={classes.content}>
+                <div className={classes.appBarSpacer}/>
+                <Container maxWidth="xl" width="100%" height="100%" position="relative"
+                           className={classes.container}>
+                    <Grid container spacing={3} alignItems="stretch"
+                          style={{height: "100%", margin: 0, width: "100%"}}>
+                        <Grid item xs={12} md={12} lg={12} className={classes.grid}>
+                            <Switch>
+                                {routeArray.map((prop, key) => {
+                                    return (
+                                        <Route
+                                            path={prop.path}
+                                            component={prop.component}
+                                            exact={prop.exact || false}
+                                            key={`route-${key}`}
+                                        />
+                                    );
+                                })}
+                                <Route exact path="/">
+                                    <Redirect to="/home"/>
+                                </Route>
+                            </Switch>
                         </Grid>
-                    </Container>
-                </main>
-            </Router>
-        </div>
-    );
+                    </Grid>
+                </Container>
+            </main>
+        </Router>
+    </div>
+)
+    ;
 }
