@@ -89,7 +89,18 @@ export default class PsPdf extends Component {
 
     let theme       = PSPDFKit.Theme.LIGHT;
     let styleSheets = this.state.styleSheets;
-    if(this.props.pdfStyle === '2') {
+    
+    if(this.props.pdfStyle === '1') {
+      toolbarItems.push({
+        type   : "custom",
+        id     : "my-fullscreen-button",
+        title  : "Full Screen",
+        onPress: function () {
+          requestFullscreen(document.getElementById('defaultPdf'));
+        }
+      });
+    }
+    else if(this.props.pdfStyle === '2') {
       styleSheets = [];
     }
     else if (this.props.pdfStyle === '3') {
@@ -173,5 +184,16 @@ export default class PsPdf extends Component {
         style={{width: "100%", height: "100%", position: "static"}}
       />
     );
+  }
+}
+function requestFullscreen(element) {
+  if (element.requestFullscreen) {
+    element.requestFullscreen();
+  } else if (element.mozRequestFullScreen) {
+    element.mozRequestFullScreen();
+  } else if (element.webkitRequestFullscreen) {
+    element.webkitRequestFullscreen();
+  } else if (element.msRequestFullscreen) {
+    element.msRequestFullscreen();
   }
 }
