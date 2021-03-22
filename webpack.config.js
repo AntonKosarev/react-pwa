@@ -31,7 +31,7 @@ module.exports = {
                 {from: "./public/manifest.json", to: "./manifest.json"},
                 {from: "./public/serviceWorker.js", to: "./serviceWorker.js"},
                 {from: "./public/offline.html", to: "./offline.html"},
-                {from: "./public/404.html", to: "./404.html"},
+                {from: "./public/notfound.html", to: "./notfound.html"},
                 {from: "./public/pspdfkit-lib", to: "./pspdfkit-lib"},
                 {from: "./public/example.pdf", to: "./example.pdf"},
                 {from: "./public/example2.pdf", to: "./example2.pdf"},
