@@ -1,8 +1,6 @@
 import React from 'react';
 import {Button} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
-import readFileAsArrayBuffer from "../../utils/utils";
-import PsPdf from "../pdf/PsPdf";
 
 const useStyles = makeStyles((theme) => ({
     root: {

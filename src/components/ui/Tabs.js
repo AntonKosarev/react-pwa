@@ -5,8 +5,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
-import FileUploader from "./FileUploader";
-import PsPdf from "../pdf/PsPdf";
 import PdfManager from "../pdf/PdfManager";
 
 function TabPanel(props) {
@@ -74,28 +72,31 @@ export default function SimpleTabs() {
         <div className={classes.root}>
             <AppBar position="static" className={classes.appBar}>
                 <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-                    <Tab label="Item One"   {...a11yProps(0)} />
-                    <Tab label="Item Two"   {...a11yProps(1)} />
-                    <Tab label="Item Three" {...a11yProps(2)} />
-                    <Tab label="Item Four"  {...a11yProps(3)} />
-                    <Tab label="Item Five"  {...a11yProps(4)} />
-                    <FileUploader className={classes.fileUploader}/>
+                    <Tab label="DEFAULT"   {...a11yProps(0)} />
+                    <Tab label="SIDEBAR POS"   {...a11yProps(1)} />
+                    <Tab label="CUSTOM TOOLBAR" {...a11yProps(2)} />
+                    <Tab label="DARK THEME"  {...a11yProps(3)} />
+                    <Tab label="READ ONLY"  {...a11yProps(4)} />
+                    <Tab label="CUSTOM ICONS"  {...a11yProps(5)} />
                 </Tabs>
             </AppBar>
             <TabPanel className={classes.tabPanel} value={value} index={0}>
-               <PdfManager containerId="defaultPdf" container="#defaultPdf" document="example.pdf"/>
+               <PdfManager containerId="defaultPdf" container="#defaultPdf" document="example.pdf" pdfStyle="1"/>
             </TabPanel>
             <TabPanel className={classes.tabPanel} value={value} index={1}>
-                <PdfManager containerId="defaultPdf2" container="#defaultPdf2" document="example.pdf"/>
+                <PdfManager containerId="defaultPdf2" container="#defaultPdf2" document="example.pdf" pdfStyle="2"/>
             </TabPanel>
             <TabPanel className={classes.tabPanel} value={value} index={2}>
-                <PdfManager containerId="defaultPdf3" container="#defaultPdf3" document="example.pdf"/>
+                <PdfManager containerId="defaultPdf3" container="#defaultPdf3" document="example.pdf" pdfStyle="3"/>
             </TabPanel>
             <TabPanel className={classes.tabPanel} value={value} index={3}>
-                <PdfManager containerId="defaultPdf4" container="#defaultPdf4" document="example.pdf"/>
+                <PdfManager containerId="defaultPdf4" container="#defaultPdf4" document="example.pdf" pdfStyle="4"/>
             </TabPanel>
             <TabPanel className={classes.tabPanel} value={value} index={4}>
-                <PdfManager containerId="defaultPdf5" container="#defaultPdf5" document="example.pdf"/>
+                <PdfManager containerId="defaultPdf5" container="#defaultPdf5" document="example.pdf" pdfStyle="5"/>
+            </TabPanel>
+            <TabPanel className={classes.tabPanel} value={value} index={5}>
+              <PdfManager containerId="defaultPdf6" container="#defaultPdf6" document="example.pdf" pdfStyle="6"/>
             </TabPanel>
         </div>
     );

@@ -6,11 +6,32 @@ import readFileAsArrayBuffer from "../../utils/utils";
 const baseUrl = `${window.location.protocol}//${window.location.host}/`;
 
 const stylesheets = [baseUrl + "my-pspdfkit.css"];
+const customIconsToolbar = [
+  {
+    type: "print",
+    icon: "icons/printer.svg"
+  },
+  {
+    type: "zoom-out",
+    icon: "icons/zoom-out.svg"
+  },
+  {
+    type: "pager",
+  },
+  {
+    type: "zoom-mode",
+    icon: "icons/fit-to-screen.svg"
+  },
+  {
+    type: "ink",
+    icon: "icons/marker.svg"
+  }
+];
 
 export default class PsPdf extends Component {
   constructor(props, context) {
     super(props, context);
-    this._instance  = null;
+    this._instance = null;
 
     this.state = {
       document   : props.document,
@@ -21,20 +42,20 @@ export default class PsPdf extends Component {
     };
   }
 
-  onRef (container) {
+  onRef(container) {
     // console.log(container);
     // this.setState({container : '#pdfContainer'});
   };
 
-  onPress () {
+  onPress() {
     const self      = this;
     const formInput = document.getElementById("openFile");
     formInput.click();
 
     formInput.addEventListener("change", function (e) {
-      const files  = e.target.files;
+      const files = e.target.files;
 
-      if(!files.length) {
+      if (!files.length) {
         console.error('No files loaded');
         return false;
       }
@@ -48,23 +69,52 @@ export default class PsPdf extends Component {
     });
   };
 
-  unload () {
+  unload() {
     PSPDFKit.unload(this._instance || this.state.container);
     this._instance = null;
   };
 
-  componentDidMount () {
-    const toolbarItems = PSPDFKit.defaultToolbarItems,
-          self         = this;
+  componentDidMount() {
+    let toolbarItems = PSPDFKit.defaultToolbarItems,
+        self         = this;
     // A custom item. Inside the onPress callback we can call into PSPDFKit APIs.
     toolbarItems.push({
       type   : "custom",
       id     : "my-custom-button",
-      title  : "open file custom",
+      title  : "Open File",
       onPress: function () {
         self.onPress();
       }
     });
+
+    let theme       = PSPDFKit.Theme.LIGHT;
+    let styleSheets = this.state.styleSheets;
+    if(this.props.pdfStyle === '2') {
+      styleSheets = [];
+    }
+    else if (this.props.pdfStyle === '3') {
+      // PSPDFKit exposes the default list of items as PSPDFKit.defaultToolbarItems
+      // This is an Array that can be filtered or customized as you please.
+      toolbarItems = PSPDFKit.defaultToolbarItems.filter(item => {
+        return /\b(sidebar-bookmarks|sidebar-thumbnails|zoom-in|zoom-out)\b/.test(
+          item.type
+        );
+      });
+      toolbarItems.push({
+        type: "spacer"
+      });
+      toolbarItems.push({
+        type: "search"
+      });
+    } else if (this.props.pdfStyle === '4') {
+      theme       = PSPDFKit.Theme.DARK;
+      styleSheets = [];
+    } else if(this.props.pdfStyle === '6') {
+      // PSPDFKit exposes the default list of items as PSPDFKit.defaultToolbarItems
+      // This is an Array that can be filtered or customized as you please.
+      toolbarItems = customIconsToolbar;
+      styleSheets = [baseUrl + "my-pspdfkit2.css"];
+    }
 
     this.setState({toolbarItems: toolbarItems});
 
@@ -74,18 +124,29 @@ export default class PsPdf extends Component {
       container   : this.state.container,
       licenseKey  : this.state.licenseKey,
       baseUrl     : this.state.baseUrl,
-      styleSheets : this.state.styleSheets
+      styleSheets : styleSheets,
+      theme       : theme
     }).then((instance) => {
       this._instance = instance;
-      this._instance.setViewState(viewState => (
-        viewState.set("sidebarPlacement", PSPDFKit.SidebarPlacement.START)
-      ));
+      if (this.props.pdfStyle === '2') {
+        this._instance.setViewState(viewState => (
+          viewState.set("sidebarPlacement", PSPDFKit.SidebarPlacement.END)
+        ));
+      } else if (this.props.pdfStyle === '5') {
+        this._instance.setViewState(viewState => (
+          viewState.set("readOnly", true)
+        ));
+      } else {
+        this._instance.setViewState(viewState => (
+          viewState.set("sidebarPlacement", PSPDFKit.SidebarPlacement.START)
+        ));
+      }
     }).catch((error) => {
       console.error(error.message);
     });
   };
 
-  componentDidUpdate (prevProps) {
+  componentDidUpdate(prevProps) {
     const nextProps = this.state;
     // nextProps.theme = PSPDFKit.Theme.DARK;
     // We only want to reload the document when the documentUrl prop changes.
@@ -99,11 +160,11 @@ export default class PsPdf extends Component {
     }
   };
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this.unload();
   };
 
-  render () {
+  render() {
     const containerId = this.props.containerId;
     return (
       <div

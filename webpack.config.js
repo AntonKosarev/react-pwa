@@ -35,6 +35,8 @@ module.exports = {
                 {from: "./public/example.pdf", to: "./example.pdf"},
                 {from: "./public/example2.pdf", to: "./example2.pdf"},
                 {from: "./public/my-pspdfkit.css", to: "./my-pspdfkit.css"},
+                {from: "./public/my-pspdfkit2.css", to: "./my-pspdfkit2.css"},
+                {from: "./public/icons", to: "./icons"}
             ]
         })
     ],
