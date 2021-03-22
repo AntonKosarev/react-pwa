@@ -2,6 +2,7 @@ import InsertDriveFileOutlinedIcon from '@material-ui/icons/InsertDriveFileOutli
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 import Home from "./components/ui/Home";
 import Files from "./components/ui/Files";
+import ListAltIcon from '@material-ui/icons/ListAlt';
 
 
 const pathIds = {
@@ -24,7 +25,7 @@ const pageRoutes = {
     [pathIds.files]: {
         path: pathRouting.files,
         sidebarName: "Files",
-        icon: InsertDriveFileOutlinedIcon,
+        icon: ListAltIcon,
         component: Files
     }
 };
