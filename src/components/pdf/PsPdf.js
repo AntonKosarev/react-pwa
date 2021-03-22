@@ -76,7 +76,6 @@ export default class PsPdf extends Component {
       baseUrl     : this.state.baseUrl,
       styleSheets : this.state.styleSheets
     }).then((instance) => {
-      console.log("Successfully mounted PSPDFKit", instance);
       this._instance = instance;
       this._instance.setViewState(viewState => (
         viewState.set("sidebarPlacement", PSPDFKit.SidebarPlacement.START)
@@ -88,13 +87,12 @@ export default class PsPdf extends Component {
 
   componentDidUpdate (prevProps) {
     const nextProps = this.state;
-    nextProps.theme = PSPDFKit.Theme.DARK;
+    // nextProps.theme = PSPDFKit.Theme.DARK;
     // We only want to reload the document when the documentUrl prop changes.
     if (nextProps.document !== prevProps.document) {
       this.unload();
       PSPDFKit.load(nextProps)
         .then(() => {
-          console.log("Successfully remounted PSPDFKit");
         }).catch((error) => {
         console.error(error.message);
       });

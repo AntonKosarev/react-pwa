@@ -7,6 +7,7 @@ import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 import FileUploader from "./FileUploader";
 import PsPdf from "../pdf/PsPdf";
+import PdfManager from "../pdf/PdfManager";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -82,29 +83,19 @@ export default function SimpleTabs() {
                 </Tabs>
             </AppBar>
             <TabPanel className={classes.tabPanel} value={value} index={0}>
-                <div style={{width: "100%", height: "100%", position: "static"}}>
-                    <PsPdf containerId="defaultPdf" container="#defaultPdf" document="example.pdf"/>
-                </div>
+               <PdfManager containerId="defaultPdf" container="#defaultPdf" document="example.pdf"/>
             </TabPanel>
             <TabPanel className={classes.tabPanel} value={value} index={1}>
-                <div style={{width: "100%", height: "100%", position: "static"}}>
-                    <PsPdf containerId="defaultPdf2" container="#defaultPdf2" document="example.pdf"/>
-                </div>
+                <PdfManager containerId="defaultPdf2" container="#defaultPdf2" document="example.pdf"/>
             </TabPanel>
             <TabPanel className={classes.tabPanel} value={value} index={2}>
-                <div style={{width: "100%", height: "100%", position: "static"}}>
-                    <PsPdf containerId="defaultPdf3" container="#defaultPdf3" document="example.pdf"/>
-                </div>
+                <PdfManager containerId="defaultPdf3" container="#defaultPdf3" document="example.pdf"/>
             </TabPanel>
             <TabPanel className={classes.tabPanel} value={value} index={3}>
-                <div style={{width: "100%", height: "100%", position: "static"}}>
-                    <PsPdf containerId="defaultPdf4" container="#defaultPdf4" document="example.pdf"/>
-                </div>
+                <PdfManager containerId="defaultPdf4" container="#defaultPdf4" document="example.pdf"/>
             </TabPanel>
             <TabPanel className={classes.tabPanel} value={value} index={4}>
-                <div style={{width: "100%", height: "100%", position: "static"}}>
-                    <PsPdf containerId="defaultPdf5" container="#defaultPdf5" document="example.pdf"/>
-                </div>
+                <PdfManager containerId="defaultPdf5" container="#defaultPdf5" document="example.pdf"/>
             </TabPanel>
         </div>
     );
