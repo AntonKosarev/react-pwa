@@ -25,6 +25,10 @@ const customIconsToolbar = [
   {
     type: "ink",
     icon: "icons/marker.svg"
+  },
+  {
+    type: "sidebar-bookmarks",
+    icon: "icons/bookmark.svg"
   }
 ];
 
