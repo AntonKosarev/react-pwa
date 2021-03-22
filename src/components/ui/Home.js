@@ -46,7 +46,7 @@ class Home extends Component {
                 items.push(
                     <Grid className="gridPdf" xs={12} sm={6} xl={6} item={true}>
                         <Paper style={{width: "100%", height: "520px", position: "static"}}>
-                            <PsPdf containerId={_containerId} container={_container} document={value}/>
+                            <PsPdf containerId={_containerId} container={_container} document={value} pdfStyle="6"/>
                         </Paper>
                     </Grid>
                 );
