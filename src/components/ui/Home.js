@@ -78,7 +78,7 @@ class Home extends Component {
                 <main className={classes.content}>
                     <Container maxWidth="false" className={classes.container}>
                         <Grid container spacing={0}>
-                            <Grid item xs={12} sm={8} md={6} lg={4} xl={2}>
+                            <Grid item xs={12} sm={8} md={6} lg={6} xl={4}>
                                 <Paper className="buttonPaper">
                                     <div>
                                         <img src={UploadImg} alt=""/>

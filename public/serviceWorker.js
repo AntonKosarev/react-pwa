@@ -30,8 +30,8 @@ self.addEventListener('fetch', function(event) {
     event.respondWith(
         caches.match(event.request).then(function(response) {
             if (response) {
-                console.log('Found ', event.request.url, ' in cache');
                 if (preCache) {
+                    console.log('Found ', event.request.url, ' in cache');
                     return response;
                 }
             }
