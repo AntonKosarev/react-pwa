@@ -8,7 +8,8 @@ import {NavLink} from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
     root: {
-        background: 'rgb(159,17,71)'
+        background: 'rgb(159,17,71)',
+        position: "relative",
     },
     MuiListItemIcon: {
         color: 'rgba(255, 255, 255, 0.81)'

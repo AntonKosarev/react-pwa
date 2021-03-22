@@ -1,6 +1,8 @@
 import React from 'react';
 import {Button} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
+import readFileAsArrayBuffer from "../../utils/utils";
+import PsPdf from "../pdf/PsPdf";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -9,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
         alignSelf: 'center'
     },
     fileUploaderButton: {
-        backgroundColor: 'rgba(96, 33, 106, 1)',
+        backgroundColor: '#d1185e',
         color: '#ffffff',
         padding: '6px 20px'
     }
@@ -17,7 +19,6 @@ const useStyles = makeStyles((theme) => ({
 
 const FileUploader = props => {
     const classes = useStyles();
-
 
     // Create a reference to the hidden file input element
     const hiddenFileInput = React.useRef(null);
@@ -31,8 +32,8 @@ const FileUploader = props => {
     // to handle the user-selected file
     const handleChange = event => {
         const fileUploaded = event.target.files[0];
-        console.log(fileUploaded);
-        // props.handleFile(fileUploaded);
+        // console.log(fileUploaded);
+        props.callback(fileUploaded);
     };
 
     return (

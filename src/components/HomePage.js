@@ -105,7 +105,7 @@ const useStyles = makeStyles((theme) => ({
     fixedHeight: {
         height: 400,
     },
-    grid : {
+    grid: {
         paddingLeft: "0!important",
         paddingRight: "0!important",
         paddingTop: "0!important"
@@ -163,25 +163,28 @@ export default function HomePage() {
                         </div>
                     </List>
                     <Divider/>
+                    <div className="version">Version 2021 0.0.1</div>
                 </Drawer>
                 <main className={classes.content}>
-                    <div className={classes.appBarSpacer} />
-                    <Container maxWidth="xl" width="100%" height="100%" position="relative" className={classes.container}>
-                        <Grid container spacing={3} alignItems="stretch" style={{height: "100%", margin: 0, width:"100%"}}>
+                    <div className={classes.appBarSpacer}/>
+                    <Container maxWidth="xl" width="100%" height="100%" position="relative"
+                               className={classes.container}>
+                        <Grid container spacing={3} alignItems="stretch"
+                              style={{height: "100%", margin: 0, width: "100%"}}>
                             <Grid item xs={12} md={12} lg={12} className={classes.grid}>
                                 <Switch>
                                     {routeArray.map((prop, key) => {
                                         return (
-                                          <Route
-                                            path={prop.path}
-                                            component={prop.component}
-                                            exact={prop.exact || false}
-                                            key={`route-${key}`}
-                                          />
+                                            <Route
+                                                path={prop.path}
+                                                component={prop.component}
+                                                exact={prop.exact || false}
+                                                key={`route-${key}`}
+                                            />
                                         );
                                     })}
                                     <Route exact path="/">
-                                        <Redirect to="/home" />
+                                        <Redirect to="/home"/>
                                     </Route>
                                 </Switch>
                             </Grid>
