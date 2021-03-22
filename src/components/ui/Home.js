@@ -65,8 +65,9 @@ class Home extends Component {
                 const _container = "#defaultPdf" + index;
                 const _containerId = "defaultPdf" + index;
                 items.push(
-                    <Grid className="gridPdf" xs={12} md={6} lg={6}>
-                        <Paper style={{width: "100%", height: "520px", position: "static"}}  item={true} className={classes.item}>
+                    <Grid className="gridPdf" xs={12} sm={6} xl={6}>
+                        <Paper style={{width: "100%", height: "520px", position: "static"}} item={true}
+                               className={classes.item}>
                             <PsPdf containerId={_containerId} container={_container} document={value}/>
                         </Paper>
                     </Grid>
@@ -76,9 +77,9 @@ class Home extends Component {
         return (
             <div>
                 <main className={classes.content}>
-                    <Container maxWidth="false" className={classes.container}>
+                    <Container maxWidth='false' className={classes.container}>
                         <Grid container spacing={0}>
-                            <Grid item xs={12} sm={8} md={6} lg={6} xl={4}>
+                            <Grid item xs={12} sm={8} xl={4} className="buttonItem">
                                 <Paper className="buttonPaper">
                                     <div>
                                         <img src={UploadImg} alt=""/>
@@ -88,7 +89,9 @@ class Home extends Component {
                                 </Paper>
                             </Grid>
                         </Grid>
-                        <Grid container spacing={0} >
+                    </Container>
+                    <Container maxWidth='false' className={classes.container}>
+                        <Grid container spacing={0}>
                             {items}
                         </Grid>
                     </Container>

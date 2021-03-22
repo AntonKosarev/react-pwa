@@ -35,10 +35,12 @@
   },
   "scripts": {
     "build": "webpack --mode development",
+    "build_prod": "webpack --mode production",
     "build_watch": "webpack --mode development --watch",
     "serve": "webpack serve --mode development --open",
     "serve_watch": "webpack serve --mode development --open --hot"
   },
+  "homepage": "https://antonkosarev.github.io/react-pwa/dist",
   "eslintConfig": {
     "extends": [
       "react-app",

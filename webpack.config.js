@@ -4,6 +4,9 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const webpack = require('webpack');
 
+// homeUrl = './';
+homeUrl = './react-pwa/dist/';
+
 module.exports = {
     entry: "./src/index.js",
     output: {path: path.join(__dirname, "/dist"), filename: "index_bundle.js"},

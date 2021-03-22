@@ -50,12 +50,13 @@
 
 }
 
-#theme-v1 .buttonPaper .makeStyles-root-20 {
+#theme-v1 .buttonPaper {
     margin: 0 auto;
 }
 
 #theme-v1 .buttonPaper div {
     text-align: center;
+    margin: 0 auto;
 }
 
 #theme-v1 .buttonPaper p {
@@ -76,6 +77,9 @@
     bottom: 0;
     margin: 0 0 13px 48px;
     font-size: 12px;
+}
+#theme-v1 .buttonItem {
+    margin: 0 10px;
 }
 
 #theme-v1 .MuiPaper-root.MuiDrawer-paper.makeStyles-drawerPaperClose-10 .version {
