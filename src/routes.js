@@ -18,13 +18,13 @@ const pathRouting = {
 const pageRoutes = {
     [pathIds.home]: {
         path: pathRouting.home,
-        sidebarName: "HomePage",
+        sidebarName: "HOMEPAGE",
         icon: HomeOutlinedIcon,
         component: Home
     },
     [pathIds.files]: {
         path: pathRouting.files,
-        sidebarName: "Files",
+        sidebarName: "FILES",
         icon: ListAltIcon,
         component: Files
     }

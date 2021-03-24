@@ -118,11 +118,14 @@ export default function HomePage() {
     const [open, setOpen] = React.useState(true);
     const handleDrawerOpen = () => {
         setOpen(true);
+        console.log('this.state: ', this.state);
+
     };
     const handleDrawerClose = () => {
         setOpen(false);
     };
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+
 
 
     return (
@@ -140,7 +143,7 @@ export default function HomePage() {
                     <MenuIcon/>
                 </IconButton>
                 <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-                    React PWA
+                    PDF EDITOR
                 </Typography>
             </Toolbar>
         </AppBar>
