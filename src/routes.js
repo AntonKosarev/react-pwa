@@ -1,7 +1,6 @@
-import InsertDriveFileOutlinedIcon from '@material-ui/icons/InsertDriveFileOutlined';
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
-import Home from "./components/ui/Home";
-import Files from "./components/ui/Files";
+import Home from "./pages/home/Home";
+import Files from "./pages/files/Files";
 import ListAltIcon from '@material-ui/icons/ListAlt';
 
 
@@ -30,4 +29,4 @@ const pageRoutes = {
     }
 };
 
-export { pageRoutes, pathIds, pathRouting };
+export { pageRoutes };

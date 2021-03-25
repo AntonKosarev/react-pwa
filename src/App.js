@@ -1,9 +1,9 @@
 import React from "react";
-import HomePage from "./components/HomePage";
+import IndexPage from "./pages/index/IndexPage";
 
 function App() {
   return (
-    <HomePage/>
+    <IndexPage/>
   );
 }
 
