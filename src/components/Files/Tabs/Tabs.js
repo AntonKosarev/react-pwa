@@ -1,13 +1,12 @@
 import React from 'react';
+import {tabsTheme} from "./tabsTheme";
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import PdfManager from "../pdf/PdfManager";
 import TabPanel from "./TabPanel";
-import {tabsTheme} from "./tabsTheme";
+import PdfManager from "./../../Pdf/PdfManager";
 
-const useStyles         = tabsTheme;
-const documentByDefault = 'example.pdf';
+const useStyles = tabsTheme;
 
 function a11yProps(index) {
   return {
@@ -37,23 +36,25 @@ export default function SimpleTabs() {
         </Tabs>
       </AppBar>
       <TabPanel className={classes.tabPanel} value={value} index={0}>
-        <PdfManager containerId="defaultPdf" container="#defaultPdf" document={documentByDefault} pdfStyle="1"/>
+        <PdfManager containerId="defaultPdf" container="#defaultPdf" pdfStyle="1"/>
       </TabPanel>
       <TabPanel className={classes.tabPanel} value={value} index={1}>
-        <PdfManager containerId="defaultPdf2" container="#defaultPdf2" document={documentByDefault} pdfStyle="2"/>
+        <PdfManager containerId="defaultPdf2" container="#defaultPdf2" pdfStyle="2"/>
       </TabPanel>
       <TabPanel className={classes.tabPanel} value={value} index={2}>
-        <PdfManager containerId="defaultPdf3" container="#defaultPdf3" document={documentByDefault} pdfStyle="3"/>
+        <PdfManager containerId="defaultPdf3" container="#defaultPdf3" pdfStyle="3"/>
       </TabPanel>
       <TabPanel className={classes.tabPanel} value={value} index={3}>
-        <PdfManager containerId="defaultPdf4" container="#defaultPdf4" document={documentByDefault} pdfStyle="4"/>
+        <PdfManager containerId="defaultPdf4" container="#defaultPdf4" pdfStyle="4"/>
       </TabPanel>
       <TabPanel className={classes.tabPanel} value={value} index={4}>
-        <PdfManager containerId="defaultPdf5" container="#defaultPdf5" document={documentByDefault} pdfStyle="5"/>
+        <PdfManager containerId="defaultPdf5" container="#defaultPdf5" pdfStyle="5"/>
       </TabPanel>
       <TabPanel className={classes.tabPanel} value={value} index={5}>
-        <PdfManager containerId="defaultPdf6" container="#defaultPdf6" document={documentByDefault} pdfStyle="6"/>
+        <PdfManager containerId="defaultPdf6" container="#defaultPdf6" pdfStyle="6"/>
       </TabPanel>
     </div>
   );
 }
+
+

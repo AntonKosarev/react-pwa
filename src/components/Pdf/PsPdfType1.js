@@ -1,15 +1,25 @@
 import React, {Component} from "react";
 import PSPDFKit from "pspdfkit";
 import readFileAsArrayBuffer from "../../utils/readFileAsArrayBuffer";
-import getPdfConfig from "./getPdfConfig";
-import setViewState from "./setViewState";
+import pdfConfig from "./pdfConfig";
+import requestFullscreen from "../../utils/requestFullscreen";
 
-export default class PsPdf extends Component {
+export default class PsPdfType1 extends Component {
   constructor(props, context) {
     super(props, context);
     this._instance = null;
+    const config = pdfConfig(this.props, this);
 
-    this.state = {config: getPdfConfig(this.props, this)};
+    config.toolbarItems.push({
+      type   : "custom",
+      id     : "my-fullscreen-button",
+      title  : "Full Screen",
+      onPress: function () {
+        requestFullscreen(document.getElementById(props.containerId));
+      }
+    });
+
+    this.state = {config: config};
   }
 
   unload() {
@@ -18,11 +28,11 @@ export default class PsPdf extends Component {
   };
 
   componentDidMount() {
-    // this.setState({config: config.toolbarItems});
-
     PSPDFKit.load(this.state.config).then((instance) => {
       this._instance = instance;
-      setViewState(instance, this.props.pdfStyle);
+      this._instance.setViewState(viewState => (
+        viewState.set("sidebarPlacement", PSPDFKit.SidebarPlacement.START)
+      ));
     }).catch((error) => {
       console.error(error.message);
     });

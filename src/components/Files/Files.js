@@ -1,4 +1,4 @@
-import Tabs from "./Tabs";
+import Tabs from "./Tabs/Tabs";
 import Box from "@material-ui/core/Box";
 import React from "react";
 

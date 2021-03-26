@@ -1,6 +1,6 @@
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
-import Home from "./../home/Home";
-import Files from "./../files/Files";
+import Home from "./../Home/Home";
+import Files from "./../Files/Files";
 import ListAltIcon from '@material-ui/icons/ListAlt';
 
 const pathIds = {

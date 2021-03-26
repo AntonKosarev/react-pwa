@@ -1,5 +1,8 @@
-const baseUrl     = `${window.location.protocol}//${window.location.host}/`;
-const stylesheets = [baseUrl + "my-pspdfkit.css"];
+import {baseUrl} from "../../constants/defines";
+
+const stylesheets       = [baseUrl + "my-pspdfkit.css"];
+const altStylesheets    = [baseUrl + "my-pspdfkit2.css"];
+const documentByDefault = "example.pdf";
 
 const customIconsToolbar = [
   {
@@ -27,4 +30,4 @@ const customIconsToolbar = [
   }
 ];
 
-export {baseUrl, stylesheets, customIconsToolbar}
+export {stylesheets, altStylesheets, customIconsToolbar, documentByDefault}

@@ -12,15 +12,15 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import MainListItems from './listItems';
+import MenuItems from './menuItems';
 import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
-import {pageRoutes} from "./routes";
+import {pageRoutes} from "./Routes";
 import './Index.css';
 import {theme} from "./theme";
 
 const useStyles = theme;
 
-export default function IndexPage() {
+export default function AppSkeleton() {
   const routeArray        = Object.values(pageRoutes);
   const classes           = useStyles();
   const [open, setOpen]   = React.useState(true);
@@ -68,7 +68,7 @@ export default function IndexPage() {
           <Divider/>
           <List>
             <div>
-              <MainListItems routes={routeArray}/>
+              <MenuItems routes={routeArray}/>
             </div>
           </List>
           <Divider/>

@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import PsPdf from "./../pdf/PsPdf";
+import PdfManager from "./../Pdf/PdfManager";
 import FileUploader from "./../../utils/FileUploader";
 import readFileAsArrayBuffer from "./../../utils/readFileAsArrayBuffer";
 import Container from '@material-ui/core/Container';
@@ -43,7 +43,7 @@ class Home extends Component {
         items.push(
           <Grid className="gridPdf" xs={12} sm={6} xl={6} item={true} key={index}>
             <Paper style={{width: "100%", height: "520px", position: "static"}}>
-              <PsPdf containerId={_containerId} container={_container} document={value} pdfStyle="6"/>
+              <PdfManager containerId={_containerId} container={_container} document={value} pdfStyle="6"/>
             </Paper>
           </Grid>
         );

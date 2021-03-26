@@ -31,7 +31,9 @@
     "workbox-range-requests": "^5.1.4",
     "workbox-routing": "^5.1.4",
     "workbox-strategies": "^5.1.4",
-    "workbox-streams": "^5.1.4"
+    "workbox-streams": "^5.1.4",
+    "clsx": "latest",
+    "prop-types": "latest"
   },
   "scripts": {
     "build": "webpack --mode development",

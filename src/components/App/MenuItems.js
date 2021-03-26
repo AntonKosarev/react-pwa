@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function mainListItems({routes}) {
+export default function MenuItems({routes}) {
   const classes = useStyles();
   return (
     <div className={classes.root}>
