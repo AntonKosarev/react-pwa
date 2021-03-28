@@ -12,18 +12,22 @@ class Home extends Component {
     super(props, context);
     this.state = {
       filesLoaded: [],
+      home: {
+        fileUploader: {
+          uploadedFiles: []
+        }
+      }
     };
-
-    this.file = this.file.bind(this);
+    this.fileUploaderCallback = this.fileUploaderCallback.bind(this);
   }
 
-  file(file) {
-    const self      = this;
-    let filesLoaded = this.state.filesLoaded;
-    readFileAsArrayBuffer(file)
+  fileUploaderCallback(uploadedFile) {
+    let home = this.state.home;
+    readFileAsArrayBuffer(uploadedFile)
       .then((blobArray) => {
-        filesLoaded.push(blobArray);
-        self.setState({filesLoaded: filesLoaded});
+        home.fileUploader.uploadedFiles.push(blobArray);
+        this.setState({filesLoaded: home});
+        console.log('this.state.home: ', this.state.home);
       }).catch((error) => {
       console.error(error.message);
     });
@@ -34,7 +38,7 @@ class Home extends Component {
   };
 
   render() {
-    const elements = this.state.filesLoaded; //..some array
+    const elements = this.state.home.fileUploader.uploadedFiles; //..some array
     const items    = [];
     if (elements.length > 0) {
       for (const [index, value] of elements.entries()) {
@@ -59,7 +63,7 @@ class Home extends Component {
                   <div>
                     <UploadSvg/>
                     <p>Upload your file</p>
-                    <FileUploader className="button" callback={this.file}/>
+                    <FileUploader className="button" callback={this.fileUploaderCallback}/>
                   </div>
                 </Paper>
               </Grid>
